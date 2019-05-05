@@ -5,6 +5,8 @@
 import sys
 import os
 import time
+import json
+import enum
 
 
 def get_current_path():
@@ -20,7 +22,7 @@ def get_file_full_path_recursively(root_path, file_extension_list=None):
     :return: 文件的全路径list
     """
     if not os.path.exists(root_path):
-        raise FileNotFoundError
+        raise FileNotFoundError('root_path not exists')
 
     if not os.path.isdir(root_path):
         raise Exception('root_path is not a directory')
@@ -79,4 +81,31 @@ def timestamp_2_datetime_str(timestamp):
 def get_file_extension(file_name):
     """获取文件的后缀名"""
     return os.path.splitext(file_name)[1].replace('.', '').lower()
+
+
+class LogType(enum.Enum):
+    """log的类型枚举"""
+    INFO = 'INFO',
+    ERROR = 'ERROR',
+    WARN = 'WARN',
+
+
+def log(msg, log_type=LogType.INFO, output_fd=sys.stdout):
+    """
+    输出log
+    :param msg: 支持 str list dict
+    :param log_type: 请参考 LogType
+    :param output_fd: sys.stdout sys.stderr
+    """
+    if log_type not in LogType:
+        raise Exception('Only support LogType.*')
+
+    log_type = log_type.value[0]
+
+    if type(msg) is list or type(msg) is dict:
+        output_fd.write('[%s] [%s] %s\n' % (log_type, get_now_datetime_str(), json.dumps(msg, ensure_ascii=False)))
+    elif type(msg) is str:
+        output_fd.write('[%s] [%s] %s\n' % (log_type, get_now_datetime_str(), msg))
+    else:
+        raise TypeError('only support list, dict, str')
 
