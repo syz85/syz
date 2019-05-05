@@ -37,7 +37,7 @@ def get_file_full_path_recursively(root_path, file_extension_list=None):
 
     file_list = os.listdir(root_path)
     for file_name in file_list:
-        file_full_path = os.path.abspath(file_name)
+        file_full_path = os.sep.join([root_path, file_name])
 
         if os.path.isdir(file_full_path):
             # 如果是文件夹，则递归
@@ -73,4 +73,10 @@ def datetime_str_2_timestamp(datetime_str):
 def timestamp_2_datetime_str(timestamp):
     """将时间戳转为日期时间字符串"""
     datetime_tuple = time.localtime(timestamp)
-    return time.strftime("%Y-%m-%d %H:%M:%S", datetime_tuple)
+    return time.strftime("%Y-%m-%d %H:%Mget_file_full_path_recursively:%S", datetime_tuple)
+
+
+def get_file_extension(file_name):
+    """获取文件的后缀名"""
+    return os.path.splitext(file_name)[1].replace('.', '').lower()
+
