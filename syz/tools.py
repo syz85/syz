@@ -109,6 +109,8 @@ def log(msg, log_type=LogType.INFO, output_fd=sys.stdout):
     else:
         raise TypeError('Only support list, dict, str')
 
+    output_fd.flush()
+
 
 def get_physical_cpu_count():
     """获取物理CPU的个数"""
