@@ -79,7 +79,7 @@ def timestamp_2_datetime_str(timestamp):
 
 
 def get_file_extension(file_name):
-    """获取文件的后缀名"""
+    """获取文件的后缀名 不包含 . """
     return os.path.splitext(file_name)[1].replace('.', '').lower()
 
 
@@ -96,6 +96,7 @@ def log(msg, log_type=LogType.INFO, output_fd=sys.stdout):
     :param msg: 支持 str list dict
     :param log_type: 请参考 LogType
     :param output_fd: sys.stdout sys.stderr
+    :type output_fd: _io.TextIOWrapper
     """
     if log_type not in LogType:
         raise TypeError('Only support LogType.*')
@@ -109,8 +110,12 @@ def log(msg, log_type=LogType.INFO, output_fd=sys.stdout):
     else:
         raise TypeError('Only support list, dict, str')
 
+    output_fd.flush()
+
 
 def get_physical_cpu_count():
     """获取物理CPU的个数"""
     import psutil
     return psutil.cpu_count(logical=False)
+
+
