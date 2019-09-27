@@ -47,7 +47,7 @@ def get_file_full_path_recursively(root_path, file_extension_list=None):
         else:
             # 如果是文件，则记录结果
             if file_extension_list is not None:
-                extension = os.path.splitext(file_name)[1].replace('.', '').lower()
+                extension = get_file_extension(file_name)
                 if extension in file_extension_set:
                     result_list.append(file_full_path)
             else:
@@ -79,8 +79,18 @@ def timestamp_2_datetime_str(timestamp):
 
 
 def get_file_extension(file_name):
-    """获取文件的后缀名 不包含 . """
+    """获取文件的小写后缀名 不包含 . """
     return os.path.splitext(file_name)[1].replace('.', '').lower()
+
+
+def get_file_name_without_extension(file_name):
+    """获取文件的名字 不包含后缀名"""
+    return os.path.splitext(get_file_name_without_path(file_name))[0]
+
+
+def get_file_name_without_path(file_name):
+    """获取文件名 去除路径信息"""
+    return os.path.split(file_name)[1]
 
 
 class LogType(enum.Enum):
