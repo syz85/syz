@@ -61,6 +61,11 @@ def get_now_date_str():
     return time.strftime('%Y-%m-%d', time.localtime(time.time()))
 
 
+def get_now_short_date_str():
+    """获取当前的日期字符串（短日期）"""
+    return time.strftime('%Y%m%d', time.localtime(time.time()))
+
+
 def get_now_datetime_str():
     """获取当前的日期时间字符串"""
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
@@ -72,10 +77,16 @@ def datetime_str_2_timestamp(datetime_str):
     return int(time.mktime(datetime_tuple))
 
 
+def short_date_str_2_timestamp(datetime_str):
+    """将短日期的字符串转为时间戳"""
+    datetime_tuple = time.strptime(datetime_str, "%Y%m%d")
+    return int(time.mktime(datetime_tuple))
+
+
 def timestamp_2_datetime_str(timestamp):
     """将时间戳转为日期时间字符串"""
     datetime_tuple = time.localtime(timestamp)
-    return time.strftime("%Y-%m-%d %H:%Mget_file_full_path_recursively:%S", datetime_tuple)
+    return time.strftime("%Y-%m-%d %H:%:%S", datetime_tuple)
 
 
 def get_file_extension(file_name):
@@ -83,7 +94,7 @@ def get_file_extension(file_name):
     return os.path.splitext(file_name)[1].replace('.', '').lower()
 
 
-def get_file_name_without_extension(file_name):
+def get_file_prefix(file_name):
     """获取文件的名字 不包含后缀名"""
     return os.path.splitext(get_file_name_without_path(file_name))[0]
 
