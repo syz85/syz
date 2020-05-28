@@ -11,7 +11,7 @@ import enum
 
 def get_current_path():
     """获取脚本的路径"""
-    return sys.path[0]
+    return os.path.dirname(__file__)
 
 
 def get_file_full_path_recursively(root_path, file_extension_list=None):
@@ -111,7 +111,7 @@ class LogType(enum.Enum):
     WARN = 'WARN'
 
 
-def log(msg, log_type=LogType.INFO, output_fd=sys.stdout):
+def log(msg, log_type=LogType.INFO, output_fd=sys.stderr):
     """
     输出log
     :param msg: 支持 str list dict
