@@ -9,9 +9,12 @@ import json
 import enum
 
 
-def get_current_path():
-    """获取脚本的路径"""
-    return os.path.dirname(__file__)
+def get_current_path(double_underscore_file=sys.argv[0]):
+    """
+    获取脚本的路径
+    :param double_underscore_file: __file__
+    """
+    return os.path.abspath(os.path.dirname(double_underscore_file))
 
 
 def get_file_full_path_recursively(root_path, file_extension_list=None):

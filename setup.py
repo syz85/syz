@@ -9,7 +9,7 @@ import setuptools
 
 setuptools.setup(
     name="syz",
-    version="0.0.6",
+    version="0.0.7",
     author="Sun YUANZHEN",
     author_email="sunyuanzhen@gmail.com",
     description="common tools",
