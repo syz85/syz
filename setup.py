@@ -1,15 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
 import setuptools
 
-# with open("README.md", "r") as fh:
-#     long_description = fh.read()
-
-
 setuptools.setup(
     name="syz",
-    version="0.0.7",
+    version="0.0.8",
     author="Sun YUANZHEN",
     author_email="sunyuanzhen@gmail.com",
     description="common tools",
@@ -25,5 +21,6 @@ setuptools.setup(
     platforms="any",
     install_requires=[
         "psutil",
+        "skimage",
     ],
 )
