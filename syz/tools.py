@@ -129,10 +129,8 @@ def log(msg, log_type=LogType.INFO, output_fd=sys.stderr):
 
     if type(msg) is list or type(msg) is dict:
         output_fd.write('[%s] [%s] %s\n' % (log_type, get_now_datetime_str(), json.dumps(msg, ensure_ascii=False)))
-    elif type(msg) is str:
-        output_fd.write('[%s] [%s] %s\n' % (log_type, get_now_datetime_str(), msg))
     else:
-        raise TypeError('Only support list, dict, str')
+        output_fd.write('[%s] [%s] %s\n' % (log_type, get_now_datetime_str(), msg))
 
     output_fd.flush()
 

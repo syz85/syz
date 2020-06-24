@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name="syz",
-    version="0.0.8",
+    version="0.0.9",
     author="Sun YUANZHEN",
     author_email="sunyuanzhen@gmail.com",
     description="common tools",
@@ -21,6 +21,6 @@ setuptools.setup(
     platforms="any",
     install_requires=[
         "psutil",
-        "skimage",
+        "scikit-image",
     ],
 )
