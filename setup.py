@@ -1,11 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
 import setuptools
-
-# with open("README.md", "r") as fh:
-#     long_description = fh.read()
-
 
 setuptools.setup(
     name="syz",
@@ -25,5 +21,6 @@ setuptools.setup(
     platforms="any",
     install_requires=[
         "psutil",
+        "scikit-image",
     ],
 )

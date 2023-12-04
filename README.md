@@ -16,10 +16,16 @@ import syz.nlp
 ```
 + 去掉中文停用词
 
+## img
+```python
+import syz.img
+```
++ RGBA转RGB
+
 # 打包方法
 1. 修改版本 setup.py
 2. 运行
 ```bash
-python setup.py sdist
-twine upload dist/syz-0.0.2.tar.gz
+python3 setup.py sdist
+twine upload dist/syz-0.0.8.tar.gz
 ```
