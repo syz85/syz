@@ -21,6 +21,5 @@ setuptools.setup(
     platforms="any",
     install_requires=[
         "psutil",
-        "scikit-image",
     ],
 )
